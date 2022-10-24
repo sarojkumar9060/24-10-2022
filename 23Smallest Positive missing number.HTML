@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Javascript Program to find the smallest
+        // positive missing number
+        
+            function solution(A)
+            {
+                let n = A.length;
+                // To mark the occurrence of elements
+                let present = new Array(n+1);
+                
+                
+                for(let i=0;i<n+1;i++)
+                {
+                    present[i]=false;
+                }
+                // Mark the occurrences
+                for (let i = 0; i < n; i++)
+                {
+                    // Only mark the required elements
+                    // All non-positive elements and
+                    // the elements greater n + 1 will never
+                    // be the answer
+                    // For example, the array will be {1, 2, 3}
+                    // in the worst case and the result
+                    // will be 4 which is n + 1
+                    if (A[i] > 0 && A[i] <= n)
+                    {
+                        present[A[i]] = true;
+                    }
+                }
+                // Find the first element which didn't
+                // appear in the original array
+        
+                for (let i = 1; i <= n; i++)
+                {
+                    if (!present[i])
+                    {
+                        return i;
+                    }
+                }
+                // If the original array was of the
+                // type {1, 2, 3} in its sorted form
+                return n + 1;
+            }
+            
+            // Driver Code
+            let arr = [0, 10, 2, -10, -20]
+            document.write(solution(arr));
+            
+        </script>
+         
+</body>
+</html>
